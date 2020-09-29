@@ -37,6 +37,17 @@ test('Try an attack hit', () => {
         }
     })
     expect(hitShip.getHitCount()).toBe(1);
+    expect(game.getMisses()).toHaveLength(0);
+    expect(game.getHits()).toHaveLength(1);
+})
+
+test('Try an attack on the same spot', () => {
+    const game = Gameboard();
+    game.addShip(3, { x: 2, y: 3, direction: 'down' });
+    game.receiveAttack({ x: 1, y: 5 });
+    expect(() => {
+        game.receiveAttack({ x: 1, y: 5 })
+    }).toThrow();
 })
 
 test('Not all ships have been sunk', () => {
