@@ -1,22 +1,23 @@
 import React from 'react'
 import BoardRow from './BoardRow'
 
-const Board = ({ player, handlePlayerClick }) => {
+const Board = ({ player, handlePlayerClick, moves }) => {
+
 
     return (
         <div>
             <h1>{player.player.getName()}</h1>
             <div className="board">
-                <BoardRow row={1} board={player.gameboard} handlePlayerClick={handlePlayerClick} />
-                <BoardRow row={2} board={player.gameboard} handlePlayerClick={handlePlayerClick} />
-                <BoardRow row={3} board={player.gameboard} handlePlayerClick={handlePlayerClick} />
-                <BoardRow row={4} board={player.gameboard} handlePlayerClick={handlePlayerClick} />
-                <BoardRow row={5} board={player.gameboard} handlePlayerClick={handlePlayerClick} />
-                <BoardRow row={6} board={player.gameboard} handlePlayerClick={handlePlayerClick} />
-                <BoardRow row={7} board={player.gameboard} handlePlayerClick={handlePlayerClick} />
-                <BoardRow row={8} board={player.gameboard} handlePlayerClick={handlePlayerClick} />
-                <BoardRow row={9} board={player.gameboard} handlePlayerClick={handlePlayerClick} />
-                <BoardRow row={10} board={player.gameboard} handlePlayerClick={handlePlayerClick} />
+                <BoardRow row={1} moves={moves} handlePlayerClick={handlePlayerClick} />
+                <BoardRow row={2} moves={moves} handlePlayerClick={handlePlayerClick} />
+                <BoardRow row={3} moves={moves} handlePlayerClick={handlePlayerClick} />
+                <BoardRow row={4} moves={moves} handlePlayerClick={handlePlayerClick} />
+                <BoardRow row={5} moves={moves} handlePlayerClick={handlePlayerClick} />
+                <BoardRow row={6} moves={moves} handlePlayerClick={handlePlayerClick} />
+                <BoardRow row={7} moves={moves} handlePlayerClick={handlePlayerClick} />
+                <BoardRow row={8} moves={moves} handlePlayerClick={handlePlayerClick} />
+                <BoardRow row={9} moves={moves} handlePlayerClick={handlePlayerClick} />
+                <BoardRow row={10} moves={moves} handlePlayerClick={handlePlayerClick} />
             </div>
         </div>
     )

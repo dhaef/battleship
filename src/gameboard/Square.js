@@ -1,34 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
-const Square = ({ row, col, board, handlePlayerClick }) => {
+const Square = ({ row, col, handlePlayerClick, moves }) => {
     const [hit, setHit] = useState(false);
     const [miss, setMiss] = useState(false);
 
-    const handleClick = () => {
-        handlePlayerClick({ x: row, y: col });
-
-        const misses = board.getMisses();
-        const hits = board.getHits();
-
-        misses.forEach(miss => {
+    useEffect(() => {
+        moves.misses.forEach(miss => {
             if (miss.x === row && miss.y === col) {
                 setMiss(true);
             }
         });
 
-        hits.forEach(hit => {
+        moves.hits.forEach(hit => {
             if (hit.x === row && hit.y === col) {
                 setHit(true);
             }
         });
-    }
+    }, [moves])
 
     return (
         <>
             {handlePlayerClick
                 ? <div
                     className={`square ${miss ? 'miss' : hit ? 'hit' : null}`}
-                    onClick={handleClick}
+                    onClick={() => handlePlayerClick({ x: row, y: col })}
                 ></div>
                 : <div
                     className={`square ${miss ? 'miss' : hit ? 'hit' : null}`}

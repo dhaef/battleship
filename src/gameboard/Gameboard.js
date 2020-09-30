@@ -34,7 +34,11 @@ const Gameboard = () => {
 
         combined.forEach(pick => {
             if (x === pick.x && y === pick.y) {
-                throw Error('Already tried this spot');
+                if (attackCoordinates) {
+                    throw 'Already tried this spot';
+                } else if (!attackCoordinates) {
+                    receiveAttack();
+                }
             }
         });
 
