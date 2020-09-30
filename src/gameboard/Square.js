@@ -9,7 +9,7 @@ const Square = ({ row, col, board, handlePlayerClick }) => {
 
         const misses = board.getMisses();
         const hits = board.getHits();
-        console.log(misses, hits);
+
         misses.forEach(miss => {
             if (miss.x === row && miss.y === col) {
                 setMiss(true);

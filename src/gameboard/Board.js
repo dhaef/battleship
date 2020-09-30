@@ -2,7 +2,7 @@ import React from 'react'
 import BoardRow from './BoardRow'
 
 const Board = ({ player, handlePlayerClick }) => {
-    // console.log(player);
+
     return (
         <div>
             <h1>{player.player.getName()}</h1>
