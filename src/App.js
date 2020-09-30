@@ -30,11 +30,21 @@ function App() {
   }
 
   const handlePlayerClick = (coordinates) => {
-    bot.gameboard.receiveAttack(coordinates);
+    try {
+      bot.gameboard.receiveAttack(coordinates);
+    } catch (error) {
+      alert('You already tried that spot!');
+      return
+    }
+
     if (bot.gameboard.allSunk()) {
       return 'Player 1 wins'
     } else {
-      user.gameboard.receiveAttack();
+      try {
+        user.gameboard.receiveAttack();
+      } catch (error) {
+        user.gameboard.receiveAttack();
+      }
       if (user.gameboard.allSunk()) {
         return 'Bot wins'
       }
