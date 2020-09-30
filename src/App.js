@@ -17,6 +17,8 @@ const bot = {
 function App() {
   const [userShips, setUserShips] = useState([]);
   const [botShips, setBotShips] = useState([]);
+  const [userMoves, setUserMoves] = useState({ hits: [], misses: [] });
+  const [botMoves, setBotMoves] = useState({ hits: [], misses: [] });
 
   const startGame = () => {
     setUserShips(user.gameboard.getShips());
@@ -32,20 +34,20 @@ function App() {
   const handlePlayerClick = (coordinates) => {
     try {
       bot.gameboard.receiveAttack(coordinates);
+      setBotMoves({ hits: bot.gameboard.getHits(), misses: bot.gameboard.getMisses() });
     } catch (error) {
-      alert('You already tried that spot!');
-      return
+      console.log('You already tried that spot!');
+      return 'You already tried that spot!'
     }
 
     if (bot.gameboard.allSunk()) {
+      console.log('Player wins')
       return 'Player 1 wins'
     } else {
-      try {
-        user.gameboard.receiveAttack();
-      } catch (error) {
-        user.gameboard.receiveAttack();
-      }
+      user.gameboard.receiveAttack();
+      setUserMoves({ hits: user.gameboard.getHits(), misses: user.gameboard.getMisses() });
       if (user.gameboard.allSunk()) {
+        console.log('Bot wins')
         return 'Bot wins'
       }
     }
@@ -53,8 +55,8 @@ function App() {
 
   return (
     <div>
-      {userShips.length > 0 && <Board player={user} />}
-      {userShips.length > 0 && <Board player={bot} handlePlayerClick={handlePlayerClick} />}
+      {userShips.length > 0 && <Board player={user} moves={userMoves} />}
+      {userShips.length > 0 && <Board player={bot} moves={botMoves} handlePlayerClick={handlePlayerClick} />}
       {userShips.length === 0 && <AddShips
         gameboard={user.gameboard}
         startGame={startGame}
