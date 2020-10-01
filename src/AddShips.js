@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-const AddShips = ({ gameboard, startGame }) => {
+const AddShips = ({ gameboard, startGame, setAlert }) => {
     const [smShip, setSmShip] = useState({
         x: '',
         y: '',
@@ -22,14 +22,19 @@ const AddShips = ({ gameboard, startGame }) => {
     const handleLgChange = e => setLgShip({ ...lgShip, [e.target.name]: e.target.value })
 
     const handleAddShips = () => {
-        gameboard.addShip(3, { x: +smShip.x, y: +smShip.y, direction: smShip.direction });
-        gameboard.addShip(4, { x: +mdShip.x, y: +mdShip.y, direction: mdShip.direction });
-        gameboard.addShip(5, { x: +lgShip.x, y: +lgShip.y, direction: lgShip.direction });
-        startGame();
+        try {
+            gameboard.addShip(3, { x: +smShip.x, y: +smShip.y, direction: smShip.direction });
+            gameboard.addShip(4, { x: +mdShip.x, y: +mdShip.y, direction: mdShip.direction });
+            gameboard.addShip(5, { x: +lgShip.x, y: +lgShip.y, direction: lgShip.direction });
+            startGame();
+        } catch (error) {
+            setAlert({ value: true, msg: error.message, type: 'basic' })
+        }
     }
 
     return (
         <div>
+            <p>Place your ships on your board. Boards are 10 x 10 and you have three ships with lengths of 3, 4, & 5. They can be vertical (down) or horizontal (right). They can only be placed so they don't over extend the board.</p>
             <select
                 value={smShip.direction} name='direction'
                 onChange={handleSmChange}>
