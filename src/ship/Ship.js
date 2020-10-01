@@ -6,7 +6,7 @@ const Ship = (length, { x, y, direction }) => {
 
     if (direction === 'down') {
         if ((x + length) > 10 || y > 10 || x < 1 || y < 1) {
-            throw Error("Invalid Coordinates");
+            throw Error(`Invalid Coordinates for you ship with length of ${length}`);
         }
         let xArr = [];
         for (let i = 0; i < length; i++) {
@@ -15,7 +15,7 @@ const Ship = (length, { x, y, direction }) => {
         coordinates = { x: xArr, y: y, direction: direction }
     } else if (direction === 'right') {
         if (x > 10 || (y + length) > 10 || x < 1 || y < 1) {
-            throw Error("Invalid Coordinates");
+            throw Error(`Invalid Coordinates for you ship with length of ${length}`);
         }
         let yArr = [];
         for (let i = 0; i < length; i++) {
