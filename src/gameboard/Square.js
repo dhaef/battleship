@@ -16,7 +16,7 @@ const Square = ({ row, col, handlePlayerClick, moves }) => {
                 setHit(true);
             }
         });
-    }, [moves])
+    }, [moves, row, col])
 
     return (
         <>

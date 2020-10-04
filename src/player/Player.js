@@ -1,4 +1,3 @@
-const Gameboard = require('../gameboard/Gameboard');
 
 const Player = name => {
     let score = 0;

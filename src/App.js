@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Board from './gameboard/Board';
 import Gameboard from './gameboard/Gameboard';
@@ -22,12 +22,12 @@ function App() {
 
   const startGame = () => {
     setGameStarted(true);
-    bot.gameboard.addShip(3, { x: 1, y: 1, direction: 'down' });
-    bot.gameboard.addShip(4, { x: 1, y: 2, direction: 'down' });
-    bot.gameboard.addShip(5, { x: 1, y: 3, direction: 'down' });
-    // bot.gameboard.addRandomShip(3);
-    // bot.gameboard.addRandomShip(4);
-    // bot.gameboard.addRandomShip(5);
+    // bot.gameboard.addShip(3, { x: 1, y: 1, direction: 'down' });
+    // bot.gameboard.addShip(4, { x: 1, y: 2, direction: 'down' });
+    // bot.gameboard.addShip(5, { x: 1, y: 3, direction: 'down' });
+    bot.gameboard.addRandomShip(3);
+    bot.gameboard.addRandomShip(4);
+    bot.gameboard.addRandomShip(5);
   }
 
   const handlePlayerClick = (coordinates) => {
@@ -64,15 +64,16 @@ function App() {
     });
     setUserMoves({ hits: [], misses: [] });
     setBotMoves({ hits: [], misses: [] });
-    console.log('New Game');
   }
 
   return (
     <div>
-      <h1>Battleship</h1>
+      <h1 className="center-text line-height">Battleship⛴</h1>
       {isAlert.value && <Alert message={isAlert.msg} setAlert={setIsAlert} newGame={newGame} type={isAlert.type} />}
-      {gameStarted && <Board player={user} moves={userMoves} />}
-      {gameStarted && <Board player={bot} moves={botMoves} handlePlayerClick={handlePlayerClick} />}
+      <div className="boards">
+        {gameStarted && <Board player={bot} moves={botMoves} handlePlayerClick={handlePlayerClick} />}
+        {gameStarted && <Board player={user} moves={userMoves} />}
+      </div>
       {!gameStarted && <AddShips
         gameboard={user.gameboard}
         startGame={startGame}

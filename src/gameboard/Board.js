@@ -6,7 +6,7 @@ const Board = ({ player, handlePlayerClick, moves }) => {
 
     return (
         <div>
-            <h1>{player.player.getName()}</h1>
+            <h1 className="name center-text line-height"><span style={{ textTransform: 'capitalize' }}>{player.player.getName()}</span> board</h1>
             <div className="board">
                 <BoardRow row={1} moves={moves} handlePlayerClick={handlePlayerClick} />
                 <BoardRow row={2} moves={moves} handlePlayerClick={handlePlayerClick} />
