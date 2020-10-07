@@ -1,6 +1,5 @@
 const Ship = (length, { x, y, direction }) => {
     if (length < 3 || length > 5) { throw Error("Invalid length") }
-    // if (x < 1 || x > 10 || y < 1 || y > 10) { throw Error("Invalid Coordinates") }
 
     let coordinates;
 

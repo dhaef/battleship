@@ -20,6 +20,14 @@ test('Add new ship that has invalid coordinates', () => {
     }).toThrow();
 })
 
+test('Add new ship that has invalid position', () => {
+    const game = Gameboard();
+    game.addShip(4, { x: 2, y: 1, direction: 'down' })
+    expect(() => {
+        game.addShip(4, { x: 2, y: 1, direction: 'down' })
+    }).toThrow();
+})
+
 test('Try an attack miss', () => {
     const game = Gameboard();
     game.addShip(3, { x: 2, y: 3, direction: 'down' });
