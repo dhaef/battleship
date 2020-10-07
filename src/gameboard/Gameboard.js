@@ -29,7 +29,7 @@ const Gameboard = () => {
         if (checkIfShipSpotTaken(newShip)) {
             ships.push(newShip);
         } else {
-            throw Error('Invalid Ship placement')
+            addRandomShip(length);
         }
     };
     const checkIfShipSpotTaken = ship => {
