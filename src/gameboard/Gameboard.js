@@ -56,8 +56,6 @@ const Gameboard = () => {
     const getMisses = () => misses;
     const getHits = () => hits;
 
-    // Make random attack for comp or user
-
     const receiveAttack = (attackCoordinates) => {
         const { x, y } = attackCoordinates
             ? attackCoordinates

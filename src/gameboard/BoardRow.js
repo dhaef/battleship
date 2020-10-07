@@ -1,5 +1,6 @@
 import React from 'react'
 import Square from './Square'
+import PropTypes from 'prop-types'
 
 const BoardRow = ({ row, handlePlayerClick, moves }) => {
     return (
@@ -16,6 +17,12 @@ const BoardRow = ({ row, handlePlayerClick, moves }) => {
             <Square row={row} col={10} moves={moves} handlePlayerClick={handlePlayerClick} />
         </div>
     )
+}
+
+BoardRow.propTypes = {
+    row: PropTypes.number.isRequired,
+    moves: PropTypes.object.isRequired,
+    handlePlayerClick: PropTypes.func.isRequired,
 }
 
 export default BoardRow

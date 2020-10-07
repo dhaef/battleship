@@ -1,5 +1,6 @@
 import React from 'react'
 import BoardRow from './BoardRow'
+import PropTypes from 'prop-types';
 
 const Board = ({ player, handlePlayerClick, moves }) => {
 
@@ -21,6 +22,12 @@ const Board = ({ player, handlePlayerClick, moves }) => {
             </div>
         </div>
     )
+}
+
+Board.propTypes = {
+    player: PropTypes.object.isRequired,
+    moves: PropTypes.object.isRequired,
+    handlePlayerClick: PropTypes.func.isRequired,
 }
 
 export default Board

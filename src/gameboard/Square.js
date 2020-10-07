@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 
 const Square = ({ row, col, handlePlayerClick, moves }) => {
     const [hit, setHit] = useState(false);
@@ -30,6 +31,13 @@ const Square = ({ row, col, handlePlayerClick, moves }) => {
                 ></div>}
         </>
     )
+}
+
+Square.propTypes = {
+    row: PropTypes.number.isRequired,
+    col: PropTypes.number.isRequired,
+    moves: PropTypes.object.isRequired,
+    handlePlayerClick: PropTypes.func.isRequired,
 }
 
 export default Square

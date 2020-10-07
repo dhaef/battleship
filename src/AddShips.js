@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 
 const AddShips = ({ gameboard, startGame, setAlert }) => {
     const [smShip, setSmShip] = useState({
@@ -105,6 +106,12 @@ const AddShips = ({ gameboard, startGame, setAlert }) => {
             </div>
         </div>
     )
+}
+
+AddShips.propTypes = {
+    startGame: PropTypes.func.isRequired,
+    setAlert: PropTypes.func.isRequired,
+    gameboard: PropTypes.object.isRequired,
 }
 
 export default AddShips
