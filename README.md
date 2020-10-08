@@ -1,6 +1,6 @@
 # React Battleship
 
-This project was create based off of the curriculum from [The Odin Project](https://github.com/facebook/create-react-app).
+This project was create based off of the curriculum from [The Odin Project](https://www.theodinproject.com/courses/javascript/lessons/battleship?ref=lnav).
 
 React battleship is a single player game where you try to beat the computer to destorying each others ships.
 
